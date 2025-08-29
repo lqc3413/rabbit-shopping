@@ -4,9 +4,11 @@ import DetailHot from './components/DetailHot.vue'
 import ImageView from '@/components/ImageView/index.vue'
 import { ref,onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { getGoodsDetail} from '@/apis/detail'
 import {useCartStore} from '@/stores/cart'
 const route = useRoute()
+const router = useRouter()
 const goods = ref({})
 const goodsDetail = async() =>{
   const res = await getGoodsDetail(route.params.id)
@@ -47,6 +49,25 @@ const addCart = () =>{
     ElMessage.warning('请选择规格')
   }
 }
+
+const addCart2 = () =>{
+  if(skuObj.skuId){
+    useCart.addCart({
+      id:goods.value.id,
+      name: goods.value.name,
+      picture:goods.value.mainPictures[0],
+      price:goods.value.price,
+      count:count.value,
+      skuId:skuObj.skuId,
+      attrsText:skuObj.specsText,
+      selected:true
+    })
+    router.push('/cartlist')
+  }else{
+    ElMessage.warning('请选择规格')
+  }
+}
+
 </script>
 <!-- {{goods.value.categories[1].name}} -->
 <template>
@@ -131,6 +152,9 @@ const addCart = () =>{
               <div>
                 <el-button @click="addCart" size="large" class="btn">
                   加入购物车
+                </el-button>
+                <el-button @click="addCart2" size="large" class="btn">
+                  立即购买
                 </el-button>
               </div>
 

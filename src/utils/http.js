@@ -17,13 +17,15 @@ http.interceptors.request.use(config => {
     config.headers.Authorization = `Bearer ${token}`
   }
   return config
-}, e => Promise.reject(e))
+}, e => Promise.reject(e),
+
+)
 
 // axios响应式拦截器
 http.interceptors.response.use(res => res.data, e => {
   ElMessage({
     type: 'error',
-    message: e.response.data.message
+    message: '您的登录已过期，请重新登录'
   })
 
     const useStore = useUserStore()
@@ -31,8 +33,9 @@ http.interceptors.response.use(res => res.data, e => {
   useStore.reomveUserInfo()
   router.push('/login')
   }
+    
   return Promise.reject(e)
 })
 
-
+ 
 export default http

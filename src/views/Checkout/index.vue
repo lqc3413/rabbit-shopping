@@ -13,6 +13,7 @@ const getChecklist = async() =>{
   checkInfo.value = res.result
   const item = checkInfo.value.userAddresses.find(item => item.isDefault === 0)
   curAddress.value = item
+  console.log(checkInfo);
   
 }
 
