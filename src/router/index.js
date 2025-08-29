@@ -14,7 +14,16 @@ const router = createRouter({
         {path:'category/:id',component:()=>import('@/views/Category/index.vue')},
         {path:'category/sub/:id',component:()=>import('@/views/SubCategory/index.vue')},
         {path:'detail/:id',component:()=>import('@/views/Detail/index.vue')},
-        {path:'cartlist',component:()=>import('@/views/CartList/index.vue')}
+        {path:'cartlist',component:()=>import('@/views/CartList/index.vue')},
+        {path:'checkout',component:()=>import('@/views/Checkout/index.vue')},
+        {path:'pay',component:()=>import('@/views/pay/index.vue')},
+        {path:'paycallback',component:()=>import('@/views/pay/PayBack.vue')},
+        {path:'member',component:()=>import('@/views/Member/index.vue'),
+          children:[
+            {path:'user',component:()=>import('@/views/Member/components/UserInfo.vue')},
+            {path:'order',component:()=>import('@/views/Member/components/UserOrder.vue')}
+          ]
+        },
       ]
     },
 
