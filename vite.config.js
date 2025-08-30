@@ -7,7 +7,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // 导入对应包
 import ElementPlus from 'unplugin-element-plus/vite'
 export default defineConfig({
-    base: '/rabbit-shopping',
+    base: './',
   plugins: [
     vue(),
     AutoImport({
