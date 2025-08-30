@@ -2,10 +2,11 @@
 // createWebHistory：创建history模式的路由
 
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { createMemoryHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createMemoryHistory(),
   // path和component对应关系的位置
   routes: [
     {path:'/',component:()=>import('@/views/layout/index.vue'),

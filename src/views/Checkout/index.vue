@@ -182,6 +182,7 @@ const createOrder = async () => {
 </template>
 
 <style scoped lang="scss">
+@use "sass:color";
 .xtx-pay-checkout-page {
   margin-top: 20px;
 
@@ -383,7 +384,7 @@ const createOrder = async () => {
     &.active,
     &:hover {
       border-color: $xtxColor;
-      background: lighten($xtxColor, 50%);
+      background: color.scale($xtxColor, $lightness: 50%);
     }
 
     >ul {
